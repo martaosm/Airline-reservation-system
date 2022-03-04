@@ -24,7 +24,15 @@ public class main {
         ArrayList<model> bookedFlights = new ArrayList<>();
         
         int totalPrice = 0;
+        //String choice = "bob";
+        Object selectedValue1 = "Boo";
+                
+        while(selectedValue1!="End"){
+            
+        Object[] values1 = {"Book a flight", "Show my booked flights", "End"};
+        selectedValue1 = JOptionPane.showInputDialog(null,"Choose one", "Input",JOptionPane.INFORMATION_MESSAGE, null, values1, values1[0]);
         
+        if(selectedValue1=="Book a flight"){
         String start = JOptionPane.showInputDialog("Start destination: ");
         String end = JOptionPane.showInputDialog("End destination: ");
 
@@ -53,10 +61,14 @@ public class main {
                 break;
             }
         }
-        
-        System.out.println("-------------------------------------------------\nBooked flights: ");
+        tab.clear();
+        }
+        if(selectedValue1=="Show my booked flights"){
+        //System.out.println("-------------------------------------------------\nBooked flights: ");
+        String bF="";
         for(int i=0;i<bookedFlights.size();i++){
-            System.out.println("Date: " + bookedFlights.get(i).date + ", Hour: " + bookedFlights.get(i).hour + ", Flight number: " + bookedFlights.get(i).flight_number + ", Price: " + bookedFlights.get(i).price + ", Duration: " + bookedFlights.get(i).duration + "h");
+            bF = bF+"Date: " + bookedFlights.get(i).date + ", Hour: " + bookedFlights.get(i).hour + ", Flight number: " + bookedFlights.get(i).flight_number + ", Price: " + bookedFlights.get(i).price + ", Duration: " + bookedFlights.get(i).duration + "h\n";
+            //System.out.println("Date: " + bookedFlights.get(i).date + ", Hour: " + bookedFlights.get(i).hour + ", Flight number: " + bookedFlights.get(i).flight_number + ", Price: " + bookedFlights.get(i).price + ", Duration: " + bookedFlights.get(i).duration + "h");
         }
 
         for(int i=0;i<bookedFlights.size();i++){
@@ -64,7 +76,8 @@ public class main {
         }
         
         System.out.println("Your total: " + totalPrice);
-        
+        JOptionPane.showMessageDialog(null, bF + "Your total: " + totalPrice, "Booked flights", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
-    
+    }
 }
